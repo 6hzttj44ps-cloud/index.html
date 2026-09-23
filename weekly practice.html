@@ -4,200 +4,48 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Weekly Practice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  *,*::before,*::after{box-sizing:border-box; margin:0; padding:0;}
-  :root{
-    --bg:#F6F3EE; --surface:#FFFFFF; --ink:#181814; --ink-2:#3D3D38;
-    --muted:#888880; --faint:#C8C4BC; --green:#1E4D35; --green-mid:#2E6B4A;
-    --green-lt:#EAF2EC; --border:#E4E0D8; --radius:8px;
-    padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
-  }
-  @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]){
-      --bg:#171713; --surface:#211F1A; --ink:#EDEAE1; --ink-2:#C7C3B7;
-      --muted:#8E8A7E; --faint:#4A473D; --green:#7FBE9C; --green-mid:#5C9C79;
-      --green-lt:#1E2A22; --border:#33312A;
-    }
-  }
-  :root[data-theme="dark"]{
-    --bg:#171713; --surface:#211F1A; --ink:#EDEAE1; --ink-2:#C7C3B7;
-    --muted:#8E8A7E; --faint:#4A473D; --green:#7FBE9C; --green-mid:#5C9C79;
-    --green-lt:#1E2A22; --border:#33312A;
-  }
-  html{scroll-padding-top:env(safe-area-inset-top,0px);}
-  body{
-    font-family:'DM Sans', system-ui, sans-serif;
-    background:var(--bg); color:var(--ink); line-height:1.6;
-    padding:3rem 1.25rem 3.5rem; -webkit-font-smoothing:antialiased;
-  }
-  .wrap{max-width:640px; margin:0 auto;}
-  .header{padding-bottom:32px; border-bottom:1px solid var(--border); margin-bottom:44px;}
-  .eyebrow{
-    font-size:10.5px; font-weight:600; letter-spacing:.14em; text-transform:uppercase;
-    color:var(--green-mid); margin-bottom:16px;
-  }
-  h1{
-    font-family:'Fraunces', Georgia, serif; font-size:clamp(2.1rem,6vw,3rem);
-    font-weight:300; line-height:1.1; letter-spacing:-.02em; color:var(--ink);
-  }
-  h1 em{font-style:italic; color:var(--green);}
-  .section-head{display:flex; align-items:center; gap:14px; margin-bottom:20px;}
-  .section-head h2{
-    font-family:'Fraunces', serif; font-size:1.05rem; font-weight:400; font-style:italic;
-    color:var(--ink); white-space:nowrap;
-  }
-  .section-head .rule{flex:1; height:1px; background:var(--border);}
-  .task{
-    background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
-    padding:24px 26px 22px; margin-bottom:22px;
-  }
-  .task p.note{color:var(--ink-2); font-size:14.5px; margin-bottom:16px; line-height:1.65; font-weight:300;}
-  .progress-label{display:flex; justify-content:space-between; font-size:11.5px; color:var(--muted); margin-bottom:7px; letter-spacing:.03em;}
-  .bar{height:5px; background:var(--green-lt); border-radius:99px; overflow:hidden; margin-bottom:18px;}
-  .bar-fill{height:100%; background:var(--green-mid); width:0%; transition:width .3s ease;}
-  .days{display:grid; grid-template-columns:repeat(7,1fr); gap:8px; margin-bottom:20px;}
-  .day{text-align:center;}
-  .day span{display:block; font-size:10.5px; color:var(--muted); margin-bottom:6px; letter-spacing:.04em;}
-  .day button{
-    width:100%; aspect-ratio:1; border-radius:6px; border:1px solid var(--border);
-    background:var(--bg); color:var(--ink); font-size:14px; cursor:pointer; font-weight:500;
-    touch-action: manipulation;
-  }
-  .day button.done{background:var(--green); border-color:var(--green); color:#fff;}
-  .sugg-box{
-    padding:14px 16px; background:var(--green-lt); border-left:3px solid var(--green-mid);
-    border-radius:0 4px 4px 0;
-  }
-  .sugg-title{
-    font-size:10.5px; font-weight:600; letter-spacing:.08em; text-transform:uppercase;
-    color:var(--green-mid); margin-bottom:9px;
-  }
-  .tips{list-style:none;}
-  .tips li{
-    font-size:13.5px; color:var(--ink-2); line-height:1.65; margin-bottom:9px;
-    padding-left:14px; position:relative; font-weight:300;
-  }
-  .tips li:last-child{margin-bottom:0;}
-  .tips li::before{content:"—"; position:absolute; left:0; color:var(--faint);}
-  .tips strong{color:var(--green); font-weight:600;}
-  .closing{margin-top:12px; padding-top:32px; border-top:1px solid var(--border); text-align:center;}
-  .closing p{font-size:13.5px; color:var(--ink-2); font-weight:300; max-width:48ch; margin:0 auto 20px; line-height:1.7;}
-  .sig p{font-size:13px; color:var(--muted); margin-bottom:6px; font-weight:300;}
-  .sig-name{font-family:'Fraunces', serif; font-style:italic; font-size:1.3rem; color:var(--ink);}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#F6F3EE;--surface:#FFF;--ink:#181814;--ink-2:#3D3D38;--muted:#888880;--faint:#C8C4BC;--green:#1E4D35;--green-mid:#2E6B4A;--green-lt:#EAF2EC;--border:#E4E0D8;--radius:10px;--wa:#25D366}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#171713;--surface:#211F1A;--ink:#EDEAE1;--ink-2:#C7C3B7;--muted:#8E8A7E;--faint:#4A473D;--green:#7FBE9C;--green-mid:#5C9C79;--green-lt:#1E2A22;--border:#33312A}}
+:root[data-theme=dark]{--bg:#171713;--surface:#211F1A;--ink:#EDEAE1;--ink-2:#C7C3B7;--muted:#8E8A7E;--faint:#4A473D;--green:#7FBE9C;--green-mid:#5C9C79;--green-lt:#1E2A22;--border:#33312A}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;padding:3rem 1.25rem 3.5rem;-webkit-font-smoothing:antialiased}
+.wrap{max-width:680px;margin:0 auto}.header{padding-bottom:30px;border-bottom:1px solid var(--border);margin-bottom:40px}.header-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}.eyebrow{font-size:10.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--green-mid);margin-bottom:16px}h1{font-family:Fraunces,Georgia,serif;font-size:clamp(2.1rem,6vw,3rem);font-weight:300;line-height:1.1;letter-spacing:-.02em}h1 em{font-style:italic;color:var(--green)}
+.theme-toggle,.btn{border:1px solid var(--border);border-radius:9px;padding:10px 14px;background:var(--surface);color:var(--ink);font:600 12px 'DM Sans',sans-serif;cursor:pointer}.theme-toggle{white-space:nowrap}.section-head{display:flex;align-items:center;gap:14px;margin-bottom:20px}.section-head h2{font-family:Fraunces,serif;font-size:1.05rem;font-weight:400;font-style:italic;white-space:nowrap}.rule{flex:1;height:1px;background:var(--border)}
+.task,.share-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px 26px 22px;margin-bottom:22px;box-shadow:0 14px 34px rgba(24,24,20,.05)}.task p.note{color:var(--ink-2);font-size:14.5px;margin-bottom:16px;line-height:1.65;font-weight:300}.progress-label{display:flex;justify-content:space-between;font-size:11.5px;color:var(--muted);margin-bottom:7px;letter-spacing:.03em}.bar{height:5px;background:var(--green-lt);border-radius:99px;overflow:hidden;margin-bottom:18px}.bar-fill{height:100%;background:var(--green-mid);width:0;transition:width .3s ease}.days{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-bottom:20px}.day{text-align:center}.day span{display:block;font-size:10.5px;color:var(--muted);margin-bottom:6px;letter-spacing:.04em}.day button{width:100%;aspect-ratio:1;border-radius:7px;border:1px solid var(--border);background:var(--bg);color:var(--ink);font-size:14px;cursor:pointer;font-weight:600;touch-action:manipulation}.day button.done{background:var(--green);border-color:var(--green);color:#fff}.sugg-box{padding:14px 16px;background:var(--green-lt);border-left:3px solid var(--green-mid);border-radius:0 4px 4px 0}.sugg-title{font-size:10.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--green-mid);margin-bottom:9px}.tips{list-style:none}.tips li{font-size:13.5px;color:var(--ink-2);line-height:1.65;margin-bottom:9px;padding-left:14px;position:relative;font-weight:300}.tips li:last-child{margin-bottom:0}.tips li::before{content:'—';position:absolute;left:0;color:var(--faint)}.tips strong{color:var(--green);font-weight:600}
+.share-card{margin-top:2px;padding:20px}.share-card label{display:block;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:9px}.share-row{display:flex;gap:10px}.share-card input{flex:1;min-width:0;border:1px solid var(--border);background:var(--bg);color:var(--ink);border-radius:9px;padding:11px 13px;font:14px 'DM Sans',sans-serif}.share-card input:focus{outline:2px solid var(--green-mid);outline-offset:1px}.btn-whatsapp{background:var(--wa);border-color:var(--wa);color:#fff}.btn-copy{background:var(--green-lt);color:var(--green)}.status{min-height:18px;margin-top:10px;color:var(--muted);font-size:12px}.closing{margin-top:12px;padding-top:32px;border-top:1px solid var(--border);text-align:center}.closing p{font-size:13.5px;color:var(--ink-2);font-weight:300;max-width:48ch;margin:0 auto 20px;line-height:1.7}.sig p{font-size:13px;color:var(--muted);margin-bottom:6px}.sig-name{font-family:Fraunces,serif;font-style:italic;font-size:1.3rem}
+@media(max-width:560px){body{padding:2rem 1rem 2.5rem}.header-top{flex-direction:column}.theme-toggle{width:100%}.task{padding:20px 18px 18px}.share-row{flex-direction:column}.share-row .btn{width:100%}}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <div class="header">
-    <div class="eyebrow">Weekly Rhythm</div>
-    <h1>Weekly <em>Practice</em></h1>
-  </div>
-
+  <header class="header"><div class="header-top"><div><div class="eyebrow">Weekly Rhythm</div><h1>Weekly <em>Practice</em></h1></div><button id="theme-toggle" class="theme-toggle" type="button">Dark mode</button></div></header>
   <div class="section-head"><h2>Podcast Shadowing</h2><div class="rule"></div></div>
-  <div class="task">
-    <p class="note">Listen 10 minutes a day and repeat after the speaker (this is called "shadowing"). We'll choose one podcast episode together — about an hour long — and finish it as a team, every 1–2 weeks.</p>
-    <div class="sugg-box">
-      <div class="sugg-title">How to Practice</div>
-      <ul class="tips">
-        <li><strong>Speak out loud.</strong> Don't just listen — repeat what you hear, right after the speaker says it.</li>
-        <li><strong>Keep going.</strong> If you hear a word you don't know, don't stop. You can look it up later.</li>
-        <li><strong>Repeat hard parts.</strong> If a sentence is tricky, play it again 2–3 times before moving on.</li>
-        <li><strong>Copy the style.</strong> Try to sound like the speaker — fast or slow, calm or excited.</li>
-      </ul>
-    </div>
-    <div style="margin-top:20px;">
-      <div class="progress-label"><span>Minutes covered</span><span id="podcast-minutes">0 / 60</span></div>
-      <div class="bar"><div class="bar-fill" id="podcast-bar"></div></div>
-      <div class="days" id="podcast-days">
-        <div class="day"><span>Mon</span><button data-key="podcast" data-i="0"></button></div>
-        <div class="day"><span>Tue</span><button data-key="podcast" data-i="1"></button></div>
-        <div class="day"><span>Wed</span><button data-key="podcast" data-i="2"></button></div>
-        <div class="day"><span>Thu</span><button data-key="podcast" data-i="3"></button></div>
-        <div class="day"><span>Fri</span><button data-key="podcast" data-i="4"></button></div>
-        <div class="day"><span>Sat</span><button data-key="podcast" data-i="5"></button></div>
-        <div class="day"><span>Sun</span><button data-key="podcast" data-i="6"></button></div>
-      </div>
-    </div>
-  </div>
-
+  <div class="task"><p class="note">Listen 10 minutes a day and repeat after the speaker (this is called "shadowing"). We'll choose one podcast episode together — about an hour long — and finish it as a team, every week.</p><div class="sugg-box"><div class="sugg-title">How to Practice</div><ul class="tips"><li><strong>Speak out loud.</strong> Don't just listen — repeat what you hear, right after the speaker says it.</li><li><strong>Keep going.</strong> If you hear a word you don't know, don't stop. You can look it up later.</li><li><strong>Repeat hard parts.</strong> If a sentence is tricky, play it again 2–3 times before moving on.</li><li><strong>Copy the style.</strong> Try to sound like the speaker — fast or slow, calm or excited.</li></ul></div><div style="margin-top:20px"><div class="progress-label"><span>Minutes covered</span><span id="podcast-minutes">0 / 60</span></div><div class="bar"><div class="bar-fill" id="podcast-bar"></div></div><div class="days" id="podcast-days"></div></div></div>
   <div class="section-head"><h2>English Journaling</h2><div class="rule"></div></div>
-  <div class="task">
-    <p class="note">Write for 5 minutes in English, in your notebook — morning or night, whatever you prefer. Write anything you're thinking about.</p>
-    <div class="sugg-box">
-      <div class="sugg-title">How to Practice</div>
-      <ul class="tips">
-        <li><strong>Don't worry about mistakes.</strong> The goal is to finish 5 minutes of writing, not to write perfectly.</li>
-        <li><strong>Stuck on a word?</strong> Write "I don't know how to say ___" in English and keep going. It's okay to leave gaps.</li>
-        <li><strong>Use one notebook.</strong> Keep every entry in the same place, so you can look back and see your progress.</li>
-        <li><strong>Check with AI.</strong> After you finish, ask an AI to only point out your mistakes — then fix just those parts.</li>
-      </ul>
-    </div>
-    <div style="margin-top:20px;">
-      <div class="progress-label"><span>Days done</span><span id="journal-count">0 / 7</span></div>
-      <div class="bar"><div class="bar-fill" id="journal-bar"></div></div>
-      <div class="days" id="journal-days">
-        <div class="day"><span>Mon</span><button data-key="journal" data-i="0"></button></div>
-        <div class="day"><span>Tue</span><button data-key="journal" data-i="1"></button></div>
-        <div class="day"><span>Wed</span><button data-key="journal" data-i="2"></button></div>
-        <div class="day"><span>Thu</span><button data-key="journal" data-i="3"></button></div>
-        <div class="day"><span>Fri</span><button data-key="journal" data-i="4"></button></div>
-        <div class="day"><span>Sat</span><button data-key="journal" data-i="5"></button></div>
-        <div class="day"><span>Sun</span><button data-key="journal" data-i="6"></button></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="closing">
-    <p>Tap a box each time you finish a task. Don't worry if you miss a day — just keep going. We'll pick a new podcast together every 1–2 weeks.</p>
-    <div class="sig">
-      <p>Best regards, your English teacher</p>
-      <div class="sig-name">Niloofar</div>
-    </div>
-  </div>
+  <div class="task"><p class="note">Write for 5 minutes in English, in your notebook — morning or night, whatever you prefer. Write anything you're thinking about.</p><div class="sugg-box"><div class="sugg-title">How to Practice</div><ul class="tips"><li><strong>Don't worry about mistakes.</strong> The goal is to finish 5 minutes of writing, not to write perfectly.</li><li><strong>Stuck on a word?</strong> Write "I don't know how to say ___" in English and keep going. It's okay to leave gaps.</li><li><strong>Use one notebook.</strong> Keep every entry in the same place, so you can look back and see your progress.</li><li><strong>Check with AI.</strong> After you finish, ask an AI to only point out your mistakes — then fix just those parts.</li></ul></div><div style="margin-top:20px"><div class="progress-label"><span>Days done</span><span id="journal-count">0 / 7</span></div><div class="bar"><div class="bar-fill" id="journal-bar"></div></div><div class="days" id="journal-days"></div></div></div>
+  <section class="share-card"><label for="whatsapp-phone">Send progress to WhatsApp</label><div class="share-row"><input id="whatsapp-phone" type="tel" inputmode="numeric" placeholder="WhatsApp number (optional)" aria-label="WhatsApp number"><button id="send-whatsapp" class="btn btn-whatsapp" type="button">Send</button><button id="copy-message" class="btn btn-copy" type="button">Copy</button></div><div id="share-status" class="status" aria-live="polite"></div></section>
+  <div class="closing"><p>Tap a box each time you finish a task. Don't worry if you miss a day — just keep going. We'll pick a new podcast together every 1–2 weeks.</p><div class="sig"><p>Best regards, your English teacher</p><div class="sig-name">Niloofar</div></div></div>
 </div>
-
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const DAYS = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
-
-  const savedState = localStorage.getItem("weekly_practice_state");
-  const state = savedState ? JSON.parse(savedState) : { podcast: Array(7).fill(false), journal: Array(7).fill(false) };
-
-  function saveState() {
-    localStorage.setItem("weekly_practice_state", JSON.stringify(state));
-  }
-
-  document.querySelectorAll(".day button").forEach(btn => {
-    btn.addEventListener("click", (e) => {
-      e.preventDefault();
-      const key = btn.dataset.key;
-      const i = parseInt(btn.dataset.i, 10);
-      state[key][i] = !state[key][i];
-      saveState();
-      render();
-    });
-  });
-
-  function render(){
-    document.querySelectorAll(".day button").forEach(btn => {
-      const key = btn.dataset.key;
-      const i = parseInt(btn.dataset.i, 10);
-      btn.textContent = state[key][i] ? "✓" : "";
-      btn.className = state[key][i] ? "done" : "";
-    });
-
-    const pDone = state.podcast.filter(Boolean).length;
-    const pMinutes = pDone * 10;
-    document.getElementById("podcast-minutes").textContent = `${Math.min(pMinutes,60)} / 60`;
-    document.getElementById("podcast-bar").style.width = Math.min(pMinutes/60*100,100) + "%";
-
-    const jDone = state.journal.filter(Boolean).length;
-    document.getElementById("journal-count").textContent = `${jDone} / 7`;
-    document.getElementById("journal-bar").style.width = (jDone/7*100) + "%";
-  }
-
-  render();
+document.addEventListener('DOMContentLoaded',()=>{
+ const days=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'], key='weekly_practice_state';
+ let state; try{state=JSON.parse(localStorage.getItem(key))||{}}catch(e){state={}};
+ state.podcast=Array.isArray(state.podcast)&&state.podcast.length===7?state.podcast:Array(7).fill(false);
+ state.journal=Array.isArray(state.journal)&&state.journal.length===7?state.journal:Array(7).fill(false);
+ const save=()=>localStorage.setItem(key,JSON.stringify(state));
+ function buildDays(id,type){document.getElementById(id).innerHTML=days.map((day,i)=>`<div class="day"><span>${day}</span><button type="button" data-key="${type}" data-i="${i}" aria-label="Mark ${day} ${type} practice"></button></div>`).join('')}
+ buildDays('podcast-days','podcast');buildDays('journal-days','journal');
+ function summary(){const p=state.podcast.filter(Boolean).length,j=state.journal.filter(Boolean).length;return `Hi Niloofar, here is my weekly practice progress:\n- Podcast shadowing: ${p}/7 days (${Math.min(p*10,60)} minutes)\n- English journaling: ${j}/7 days\nTotal completed: ${p+j} activities this week.`}
+ function render(){document.querySelectorAll('.day button').forEach(b=>{const done=state[b.dataset.key][Number(b.dataset.i)];b.textContent=done?'✓':'';b.classList.toggle('done',done);b.setAttribute('aria-pressed',done)});const p=state.podcast.filter(Boolean).length,j=state.journal.filter(Boolean).length;document.getElementById('podcast-minutes').textContent=`${Math.min(p*10,60)} / 60`;document.getElementById('podcast-bar').style.width=`${Math.min(p*10/60*100,100)}%`;document.getElementById('journal-count').textContent=`${j} / 7`;document.getElementById('journal-bar').style.width=`${j/7*100}%`}
+ document.querySelectorAll('.day button').forEach(b=>b.addEventListener('click',()=>{const k=b.dataset.key,i=Number(b.dataset.i);state[k][i]=!state[k][i];save();render()}));
+ document.getElementById('send-whatsapp').addEventListener('click',()=>{const phone=document.getElementById('whatsapp-phone').value.replace(/\D/g,'');const url=phone?`https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(summary())}`:`https://wa.me/?text=${encodeURIComponent(summary())}`;window.open(url,'_blank','noopener');document.getElementById('share-status').textContent='Opening WhatsApp with your progress message.'});
+ document.getElementById('copy-message').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(summary());document.getElementById('share-status').textContent='Progress message copied.'}catch(e){document.getElementById('share-status').textContent='Copy is unavailable in this browser.'}});
+ const toggle=document.getElementById('theme-toggle');function theme(t){document.documentElement.dataset.theme=t;toggle.textContent=t==='dark'?'Light mode':'Dark mode';localStorage.setItem('weekly_practice_theme',t)}theme(localStorage.getItem('weekly_practice_theme')||'light');toggle.addEventListener('click',()=>theme(document.documentElement.dataset.theme==='dark'?'light':'dark'));render();
 });
 </script>
 </body>
